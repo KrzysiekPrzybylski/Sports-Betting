@@ -1,4 +1,4 @@
 package com.crud.bets.exception;
 
-public class UserNotFoundException {
+public class UserNotFoundException extends Exception{
 }

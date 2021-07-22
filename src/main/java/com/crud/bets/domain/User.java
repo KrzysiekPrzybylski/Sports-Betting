@@ -3,9 +3,7 @@ package com.crud.bets.domain;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +21,20 @@ public class User {
     private BigDecimal balance = BigDecimal.ZERO;
     private String encryptedPassword;
     private boolean active = true;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name ="USER_ROLES",
+            joinColumns = @JoinColumn(name="USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
+    )
     private Set<Role> roles = new HashSet<>();
 
+    @NotNull
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "CARTSLIP_ID")
+    private Slip cartSlip = new Slip();
+
+    public void addToBalance(BigDecimal value) {
+        balance=balance.add(value);
+    }
 }
