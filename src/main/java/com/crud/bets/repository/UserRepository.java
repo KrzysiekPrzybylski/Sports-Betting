@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 
     Optional<User> findBySlipContains(Slip slip);
+
+    Optional<User> findByEmail(String username);
+
 }

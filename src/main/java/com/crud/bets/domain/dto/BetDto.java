@@ -1,9 +1,7 @@
 package com.crud.bets.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.crud.bets.domain.BetType;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -14,8 +12,8 @@ import java.math.BigDecimal;
 public class BetDto {
 
     private long betId;
-    private String event;
-    private String type;
+    private long eventId;
+    private BetType type;
     private BigDecimal odds;
     private boolean active;
 

@@ -32,6 +32,13 @@ public class Bet {
     @NotNull
     private BetResult result = BetResult.NOT_FINISHED;
 
+    public Bet(Event event, BetType type, BigDecimal odds, boolean active) {
+        this.event = event;
+        this.type = type;
+        this.odds = odds;
+        this.active = active;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

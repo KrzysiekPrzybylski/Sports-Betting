@@ -15,11 +15,17 @@ public class User {
     @GeneratedValue
     @NotNull
     private long userId;
+    @NotNull
     private String name;
+    @NotNull
     private String lastName;
+    @NotNull
     private String email;
+    @NotNull
     private BigDecimal balance = BigDecimal.ZERO;
+    @NotNull
     private String encryptedPassword;
+    @NotNull
     private boolean active = true;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(

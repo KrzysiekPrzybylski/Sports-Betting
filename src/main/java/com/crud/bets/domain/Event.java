@@ -25,6 +25,8 @@ public class Event {
     private Category category;
     @NotNull
     private LocalDateTime dateTime;
+    @NotNull
+    private boolean finished = true;
 
     @NotNull
     private String teamOneName;
@@ -34,6 +36,14 @@ public class Event {
     private BigDecimal teamOneScore;
     @NotNull
     private BigDecimal teamTwoScore;
-    @NotNull
-    private boolean finished = true;
+
+    public Event(Category category, LocalDateTime dateTime, boolean finished, String teamOneName, String teamTwoName, BigDecimal teamOneScore, BigDecimal teamTwoScore) {
+        this.category = category;
+        this.dateTime = dateTime;
+        this.finished = finished;
+        this.teamOneName = teamOneName;
+        this.teamTwoName = teamTwoName;
+        this.teamOneScore = teamOneScore;
+        this.teamTwoScore = teamTwoScore;
+    }
 }
