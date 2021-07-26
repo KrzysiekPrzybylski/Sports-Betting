@@ -10,29 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class EventMapper {
 
-    private final CategoryService categoryService;
+    public Event mapToEvent(EventDto eventDto){
+        Event event = new Event();
+        event.setDateTime(eventDto.getDateTime());
+        event.setTeamOneName(eventDto.getTeamOneName());
+        event.setTeamTwoName(eventDto.getTeamTwoName());
+        event.setTeamOneScore(eventDto.getTeamOneScore());
+        event.setTeamTwoScore(eventDto.getTeamTwoScore());
+        event.setFinished(Optional.of(eventDto.isFinished()).orElse(false));
 
-    @Autowired
-    public EventMapper(CategoryRepository categoryRepository, CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
-
-    public Event mapToEvent(EventDto eventDto, long categoryId) throws CategoryNotFoundException {
-        Category category = categoryService.getCategory(categoryId);
-        return new Event(
-                category,
-                eventDto.getDateTime(),
-                eventDto.isFinished(),
-                eventDto.getTeamOneName(),
-                eventDto.getTeamTwoName(),
-                eventDto.getTeamOneScore(),
-                eventDto.getTeamTwoScore()
-        );
+        return event;
     }
     public EventDto mapToEventDto(Event event) {
         String categoryName = null;
@@ -55,4 +48,5 @@ public class EventMapper {
                 .map(this::mapToEventDto)
                 .collect(Collectors.toList());
     }
+
 }

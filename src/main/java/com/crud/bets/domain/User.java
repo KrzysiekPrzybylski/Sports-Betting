@@ -34,6 +34,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
     )
     private Set<Role> roles = new HashSet<>();
+    @OneToMany(cascade =  CascadeType.All, fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private Set<Slip> slips = new HashSet<>();
 
     @NotNull
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

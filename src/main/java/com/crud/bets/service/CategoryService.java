@@ -1,7 +1,9 @@
 package com.crud.bets.service;
 
 import com.crud.bets.domain.Category;
+import com.crud.bets.domain.Event;
 import com.crud.bets.exception.CategoryNotFoundException;
+import com.crud.bets.exception.EventNotFoundException;
 import com.crud.bets.repository.CategoryRepository;
 import com.crud.bets.repository.EventRepository;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,18 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
     public Category changeName(long categoryId, String name) throws CategoryNotFoundException{
-        Category category = categoryRepository.findById(categoryId).orElseThrow(CategoryNotFoundException::new)
+        Category category = categoryRepository.findById(categoryId).orElseThrow(CategoryNotFoundException::new);
+        category.setName(name);
+        return categoryRepository.save(category);
+    }
+    public void deleteCategory(long categoryId) {
+        categoryRepository.deleteById(categoryId);
+    }
+    public Category addEvent(long categoryId, long eventId) throws CategoryNotFoundException, EventNotFoundException{
+        Category category = categoryRepository.findById(categoryId).orElseThrow(CategoryNotFoundException::new);
+        Event event = eventRepository.findById(eventId).orElseThrow(EventNotFoundException::new);
+        event.setCategory(category);
+        category.getEvents().add(event);
+        return categoryRepository.save(category);
     }
 }

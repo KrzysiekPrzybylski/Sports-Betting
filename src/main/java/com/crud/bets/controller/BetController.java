@@ -29,14 +29,18 @@ public class BetController {
     public List<BetDto> getBets() {
         return betMapper.mapToBetDtoList(betService.getBets());
     }
+
     @GetMapping("{betId}")
     public BetDto getBet(@PathVariable long betId) throws BetNotFoundException {
         return  betMapper.mapToBetDto(betService.getBet(betId));
     }
     @PostMapping(value = "add", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addBet(@RequestBody BetDto betDto) {
-        Bet bet = betMapper.mapToBet(betDto);
-        betService.addBet(bet);
+    public BetDto addBet(@RequestBody BetDto betDto) {
+        return betMapper.mapToBetDto(betService.addBet(betMapper.mapToBet(betDto)));
+    }
+    @PatchMapping
+    public BetDto changeActivity(@PathVariable long betId) throws BetNotFoundException {
+        return betMapper.mapToBetDto(betService.changeActivity(betId));
     }
     @DeleteMapping("{betId}")
     public void  deleteBet(@PathVariable long betId) {

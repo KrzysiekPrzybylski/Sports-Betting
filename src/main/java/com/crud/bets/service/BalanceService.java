@@ -22,7 +22,7 @@ public class BalanceService {
         this.ratesService = ratesService;
         this.userRepository = userRepository;
     }
-    public BalanceDto getUserBalance(long userId) throws UserNotFoundException, ExchangeRatesNotFoundException {
+    public BalanceDto getUserBalance(long userId) throws UserNotFoundException{
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         BigDecimal plnBalance = user.getBalance();
         try{
