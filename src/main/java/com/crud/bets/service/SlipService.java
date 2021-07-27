@@ -72,4 +72,12 @@ public class SlipService {
         return slipRepository.save(slip);
 
     }
+
+    public Slip removeBetFromSlip(long slipId, long betId) throws BetNotFoundException {
+        Slip slip = slipRepository.findById(slipId).orElseThrow(SlipIsOrderedExcception::new);
+        Bet bet = betRepository.findById(betId).orElseThrow(BetNotFoundException::new);
+        slip.getBets().remove(bet);
+        slip.refreshTotalOdds();
+        return slipRepository.save(slip);
+    }
 }
