@@ -2,7 +2,12 @@ package com.crud.bets.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -11,7 +16,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @Configuration
-public class CoreConfiguration {
+@EnableAspectJAutoProxy
+@EnableScheduling
+public class CoreConfiguration implements WebMvcConfigurer {
 
     @Bean
     public RestTemplate restTemplate() {
@@ -25,6 +32,14 @@ public class CoreConfiguration {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
-
+    }
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        //Required by Swagger UI configuration
+        registry.addResourceHandler("/lib/**").addResourceLocations("/lib/").setCachePeriod(0);
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/").setCachePeriod(0);
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(0);
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }
