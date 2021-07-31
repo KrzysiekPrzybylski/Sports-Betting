@@ -1,6 +1,6 @@
-package com.crud.bets.api.exchange.rates.football.client;
+package com.crud.bets.api.football.client;
 
-import com.crud.bets.api.exchange.rates.football.config.FootballApiConfig;
+import com.crud.bets.api.football.config.FootballApiConfig;
 import com.crud.bets.domain.dto.FootballMatchDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +36,7 @@ public class FootballApiClient {
         URI url = UriComponentsBuilder.fromHttpUrl(apiConfig.getFootballApiEndpoint())
                 .queryParam("action", "get_events")
                 .queryParam("APIkey", apiConfig.getFootballApiKey())
-                .queryParam("leagueId", leagueId)
+                .queryParam("league_id", leagueId)
                 .queryParam("from", LocalDate.now().minusDays(lastDays).toString())
                 .queryParam("to", LocalDate.now().toString())
                 .build().encode().toUri();

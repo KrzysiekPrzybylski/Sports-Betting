@@ -17,17 +17,6 @@ class BetTestSuite {
     private BetRepository betRepository;
     @Test
     public void BetTestSave(){
-        //Given
-        Bet bet = new Bet("noga", "Euro",new BigDecimal(2),true );
-        //When
-        betRepository.save(bet);
-        long id = bet.getBetId();
-        Optional<Bet> betList = betRepository.findById(id);
-
-        //Then
-        assertTrue(betList.isPresent());
-        //CleanUp
-        //betRepository.deleteById(id);
 
     }
 

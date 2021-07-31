@@ -10,9 +10,9 @@ public class ExchangeRatesMapper {
     public ExchangeRates mapToExchangeRates(ExchangeRatesDto exchangeRatesDto) {
         ExchangeRates exchangeRates = new ExchangeRates();
         exchangeRates.setDate(exchangeRatesDto.getDate());
-        exchangeRates.setEuroRate(exchangeRatesDto.getEuroRate());
-        exchangeRates.setDollarRate(exchangeRatesDto.getDollarRate());
-        exchangeRates.setPoundRate(exchangeRatesDto.getPoundRate());
+        exchangeRates.setEuroRate(exchangeRatesDto.getRatesDto().getEuroRate());
+        exchangeRates.setDollarRate(exchangeRatesDto.getRatesDto().getDollarRate());
+        exchangeRates.setPoundRate(exchangeRatesDto.getRatesDto().getPoundRate());
 
         return exchangeRates;
     }

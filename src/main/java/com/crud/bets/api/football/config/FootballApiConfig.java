@@ -1,4 +1,4 @@
-package com.crud.bets.api.exchange.rates.football.config;
+package com.crud.bets.api.football.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

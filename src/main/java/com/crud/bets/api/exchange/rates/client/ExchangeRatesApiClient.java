@@ -26,7 +26,7 @@ public class ExchangeRatesApiClient {
 
     public ExchangeRatesDto getExchangeRates() {
 
-        URI url = UriComponentsBuilder.fromHttpUrl(apiConfig.getExchangeRateApiEndpoint)
+        URI url = UriComponentsBuilder.fromHttpUrl(apiConfig.getExchangeRateApiEndpoint())
                 .queryParam("base", apiConfig.getExchangeRateApiBase())
                 .build().encode().toUri();
 

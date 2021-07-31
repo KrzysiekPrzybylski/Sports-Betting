@@ -1,6 +1,6 @@
-package com.crud.bets.api.exchange.rates.football.controller;
+package com.crud.bets.api.football.controller;
 
-import com.crud.bets.api.exchange.rates.football.client.FootballApiClient;
+import com.crud.bets.api.football.client.FootballApiClient;
 import com.crud.bets.domain.dto.FootballMatchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

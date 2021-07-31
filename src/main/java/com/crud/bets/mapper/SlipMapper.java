@@ -4,10 +4,12 @@ import com.crud.bets.domain.Slip;
 import com.crud.bets.domain.dto.BetDto;
 import com.crud.bets.domain.dto.SlipDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class SlipMapper {
 
     private final BetMapper betMapper;

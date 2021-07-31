@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExchangeRatesApiConfig {
     @Value("${api.exchange.rates.endpoint}")
-    public String getExchangeRateApiEndpoint;
+    public String exchangeRateApiEndpoint;
 
     @Value("${api.exchange.rates.base}")
     private String exchangeRateApiBase;

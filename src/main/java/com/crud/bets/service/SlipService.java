@@ -60,7 +60,7 @@ public class SlipService {
         if (lostBetsNumber>0) {
             slip.setState(SlipState.LOST);
         } else if (notFinishedBetsNumber ==0) {
-            User user = userRepository.findBySlipContains(slip).orElseThrow(UserNotFoundException::new);
+            User user = userRepository.findBySlipsContains(slip).orElseThrow(UserNotFoundException::new);
             user.addToBalance(slip.getStake().multiply(slip.getTotalOdds()));
             slip.setState(SlipState.WINNING);
         }

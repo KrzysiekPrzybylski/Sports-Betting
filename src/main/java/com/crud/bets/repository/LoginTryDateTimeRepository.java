@@ -1,4 +1,4 @@
-package com.crud.bets.aop;
+package com.crud.bets.repository;
 
 import com.crud.bets.domain.detail.LoginTryDateTime;
 import org.springframework.data.jpa.repository.JpaRepository;
