@@ -19,24 +19,32 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.26'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jdbc', version: '2.5.2'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'junit:junit:4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'com.google.code.gson:gson'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    implementation 'io.springfox:springfox-swagger2:3.0.0'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
-    exclude group: 'org.junit.vintage', module:'junit.vintage.engine'}
-    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.6.0'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'mysql:mysql-connector-java'
+    //runtimeOnly 'org.postgresql:postgresql'
+
+    testImplementation( 'org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module:'junit.vintage.engine'
+    }
+    implementation('io.springfox:springfox-swagger2:2.9.2')
+    implementation('io.springfox:springfox-swagger-ui:2.9.2')
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 test {

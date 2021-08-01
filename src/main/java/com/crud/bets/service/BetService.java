@@ -3,12 +3,14 @@ package com.crud.bets.service;
 import com.crud.bets.domain.Bet;
 import com.crud.bets.exception.BetNotFoundException;
 import com.crud.bets.repository.BetRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+
 public class BetService {
 
     private final BetRepository betRepository;

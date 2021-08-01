@@ -21,7 +21,7 @@ public class BalanceController {
     public ResponseEntity getGetBalance(@PathVariable long userId) throws UserNotFoundException{
         return ResponseEntity.ok(balanceService.getUserBalance(userId));
     }
-    @PatchMapping()
+    @PatchMapping("/{userId}/payment")
     public ResponseEntity makePayment(@PathVariable long userId, @RequestBody ValueDto valueDto) throws UserNotFoundException {
         balanceService.payment(userId, valueDto.getValue());
         return  ResponseEntity.noContent().build();

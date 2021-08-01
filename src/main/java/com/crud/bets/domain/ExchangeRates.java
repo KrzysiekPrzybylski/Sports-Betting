@@ -3,10 +3,8 @@ package com.crud.bets.domain;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedNativeQuery;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -26,9 +24,15 @@ public class ExchangeRates {
     @NotNull
     private LocalDate date;
     @NotNull
+    @Column(precision = 5, scale = 3)
+    @Min(value = 0)
     private BigDecimal euroRate;
     @NotNull
+    @Min(value = 0)
+    @Column(precision = 5, scale = 3)
     private BigDecimal dollarRate;
     @NotNull
+    @Min(value = 0)
+    @Column(precision = 5, scale = 3)
     private BigDecimal poundRate;
 }

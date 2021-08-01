@@ -5,6 +5,7 @@ import com.crud.bets.mapper.BetMapper;
 import com.crud.bets.domain.dto.BetDto;
 import com.crud.bets.exception.BetNotFoundException;
 import com.crud.bets.service.BetService;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/bets/")
+@RequestMapping("/bets")
 public class BetController {
 
     private final BetService betService;

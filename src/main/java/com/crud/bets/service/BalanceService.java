@@ -14,6 +14,7 @@ import java.math.RoundingMode;
 
 @Service
 public class BalanceService {
+
     private final ExchangeRatesService ratesService;
     private final UserRepository userRepository;
 
@@ -22,17 +23,18 @@ public class BalanceService {
         this.ratesService = ratesService;
         this.userRepository = userRepository;
     }
-    public BalanceDto getUserBalance(long userId) throws UserNotFoundException{
+
+    public BalanceDto getUserBalance(long userId) {
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         BigDecimal plnBalance = user.getBalance();
-        try{
+        try {
             ExchangeRates rates = ratesService.getLastRates();
             return BalanceDto.builder()
                     .rateDate(rates.getDate())
                     .plnBalance(plnBalance)
                     .eurBalance(plnBalance.divide(rates.getEuroRate(),3, RoundingMode.CEILING))
-                    .gbpBalance(plnBalance.divide(rates.getPoundRate(),3,RoundingMode.CEILING))
-                    .usdBalance(plnBalance.divide(rates.getDollarRate(),3,RoundingMode.CEILING))
+                    .gbpBalance(plnBalance.divide(rates.getPoundRate(),3, RoundingMode.CEILING))
+                    .usdBalance(plnBalance.divide(rates.getDollarRate(),3, RoundingMode.CEILING))
                     .build();
         } catch (Exception e) {
             return BalanceDto.builder()

@@ -7,6 +7,7 @@ import com.crud.bets.exception.UserNotFoundException;
 import com.crud.bets.repository.RoleRepository;
 import com.crud.bets.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.net.UnknownServiceException;
+//import java.net.UnknownServiceException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private  PasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
     public UserService(UserRepository userRepository, RoleRepository roleRepository) {
@@ -37,7 +38,7 @@ public class UserService implements UserDetailsService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
-    public User getUser(long userId) throws UserNotFoundException{
+    public User getUser(long userId) {
         return userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
     }
     public User addUser(UserRegistrationDto userRegistrationDto) {
@@ -45,7 +46,7 @@ public class UserService implements UserDetailsService {
         user.setName(userRegistrationDto.getName());
         user.setLastName(userRegistrationDto.getLastName());
         user.setEmail(userRegistrationDto.getEmail());
-        user.setEncryptedPassword(encoder.encode(userRegistrationDto.getPassword()));
+        //user.setEncryptedPassword(encoder.encode(userRegistrationDto.getPassword()));
         user.getRoles().add(roleRepository.findByRole("USER").orElse(new Role()));
 
         return userRepository.save(user);

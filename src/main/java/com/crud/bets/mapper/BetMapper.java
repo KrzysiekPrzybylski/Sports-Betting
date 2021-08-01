@@ -4,6 +4,7 @@ import com.crud.bets.domain.Bet;
 import com.crud.bets.domain.Event;
 import com.crud.bets.domain.dto.BetDto;
 import com.crud.bets.service.EventService;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+
 public class BetMapper {
 
     private final EventService eventService;

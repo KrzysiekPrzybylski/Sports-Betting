@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 
 @Data
 @Entity(name = "BETS")
+@NoArgsConstructor
 public class Bet {
 
     @Id
