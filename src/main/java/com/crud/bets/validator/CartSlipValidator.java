@@ -32,9 +32,9 @@ public class CartSlipValidator {
         boolean hasEnoughFunds = user.getBalance().compareTo(user.getCartSlip().getStake()) >=0;
 
         if (hasEnoughFunds) {
-            LOGGER.info("User" + user.getEmail() + "has enough funds on the account.");
+            LOGGER.info("User " + user.getEmail() + "has enough funds on the account.");
         } else {
-            LOGGER.warn("User" + user.getEmail() + "has not enough funds on the account!");
+            LOGGER.warn("User " + user.getEmail() + "has not enough funds on the account!");
         }
         return hasEnoughFunds;
     }

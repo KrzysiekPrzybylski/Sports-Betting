@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/matches")
+@RequestMapping("/matches/")
 public class FootballApiController {
 
     private final FootballApiClient footballApiClient;

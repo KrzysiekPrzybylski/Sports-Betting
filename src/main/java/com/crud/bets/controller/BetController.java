@@ -35,11 +35,11 @@ public class BetController {
     public BetDto getBet(@PathVariable long betId) throws BetNotFoundException {
         return  betMapper.mapToBetDto(betService.getBet(betId));
     }
-    @PostMapping(value = "add", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     public BetDto addBet(@RequestBody BetDto betDto) {
         return betMapper.mapToBetDto(betService.addBet(betMapper.mapToBet(betDto)));
     }
-    @PatchMapping
+    @PatchMapping("/{beId}")
     public BetDto changeActivity(@PathVariable long betId) throws BetNotFoundException {
         return betMapper.mapToBetDto(betService.changeActivity(betId));
     }
